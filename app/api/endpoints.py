@@ -69,6 +69,7 @@ async def handle_message(payload: RequestBody):
 
     return ResponseBody(
         status="success",
+        sessionId=session_id,
         scamDetected=is_scam,
         engagementMetrics=engagement_metrics,
         extractedIntelligence=intelligence,

@@ -31,6 +31,7 @@ class ExtractedIntelligence(BaseModel):
 
 class ResponseBody(BaseModel):
     status: str = "success"
+    sessionId: Optional[str] = None
     scamDetected: bool
     engagementMetrics: Optional[EngagementMetrics] = None
     extractedIntelligence: Optional[ExtractedIntelligence] = None
