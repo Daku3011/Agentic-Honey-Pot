@@ -8,7 +8,7 @@ class ScamDetector:
         self.api_key = os.getenv("GOOGLE_API_KEY")
         if self.api_key:
             genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel('gemma-3-4b-itpro')
+            self.model = genai.GenerativeModel('gemma-3-4b-it')
         else:
             self.model = None
 
