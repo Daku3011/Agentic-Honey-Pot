@@ -14,6 +14,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import EndpointTester from "./components/EndpointTester";
 
 const Dashboard = () => {
   const [sessions, setSessions] = useState([
@@ -56,6 +57,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen p-6 md:p-10">
+      <EndpointTester />
       {/* Header */}
       <header className="flex justify-between items-center mb-10">
         <div>

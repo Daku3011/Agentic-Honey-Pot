@@ -8,6 +8,15 @@ load_dotenv()
 
 app = FastAPI(title="Agentic Honey-Pot API")
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For development, allow all. refine for prod.
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 SECRET_API_KEY = os.getenv("SECRET_API_KEY", "your-fallback-secret-key")
 
 async def verify_api_key(x_api_key: str = Header(...)):
