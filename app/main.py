@@ -8,6 +8,18 @@ from app.models.schemas import RequestBody, ResponseBody
 from app.api.endpoints import router as api_router
 
 app = FastAPI(title="Agentic Honey-Pot API")
+from starlette.requests import Request
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    print(f"DEBUG: Incoming Request: {request.method} {request.url}")
+    try:
+        body = await request.body()
+        print(f"DEBUG: Body: {body.decode()}")
+    except:
+        pass
+    response = await call_next(request)
+    return response
 
 from fastapi.middleware.cors import CORSMiddleware
 

@@ -10,6 +10,10 @@ router = APIRouter()
 # Simple in-memory session store (In a real app, use Redis or a DB)
 sessions = {}
 
+@router.get("/message")
+async def check_message_endpoint():
+    return {"status": "active", "method": "GET allowed for availability check"}
+
 @router.post("/message", response_model=ResponseBody)
 async def handle_message(payload: RequestBody):
     session_id = payload.sessionId
