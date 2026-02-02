@@ -1,10 +1,11 @@
 import os
-from fastapi import FastAPI, Header, HTTPException, Depends
 from dotenv import load_dotenv
-from app.models.schemas import RequestBody, ResponseBody
-from app.api.endpoints import router as api_router
 
 load_dotenv()
+
+from fastapi import FastAPI, Header, HTTPException, Depends
+from app.models.schemas import RequestBody, ResponseBody
+from app.api.endpoints import router as api_router
 
 app = FastAPI(title="Agentic Honey-Pot API")
 
