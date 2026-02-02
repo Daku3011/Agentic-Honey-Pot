@@ -30,14 +30,31 @@ const EndpointTester = () => {
     setError(null);
 
     try {
-      // Using fetch to test the endpoint
-      const response = await fetch(url, {
-        method: 'GET', // Or POST depending on what the honeypot expects, defaulting to GET for responsiveness check
+      // Determine method based on URL
+      const isMessageEndpoint = url.includes('/api/message');
+      const method = isMessageEndpoint ? 'POST' : 'GET';
+      
+      const options = {
+        method: method,
         headers: {
           'x-api-key': apiKey,
           'Content-Type': 'application/json'
-        },
-      });
+        }
+      };
+
+      if (isMessageEndpoint) {
+        options.body = JSON.stringify({
+          sessionId: "tester-ui-session",
+          message: {
+            sender: "scammer",
+            text: "You won a lottery! Click this link"
+          },
+          conversationHistory: []
+        });
+      }
+
+      // Using fetch to test the endpoint
+      const response = await fetch(url, options);
 
       const data = await response.json().catch(() => ({ message: "Non-JSON response received" }));
       
