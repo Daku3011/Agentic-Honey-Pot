@@ -8,7 +8,7 @@ class AgentManager:
         self.api_key = os.getenv("GOOGLE_API_KEY")
         if self.api_key:
             genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
+            self.model = genai.GenerativeModel('gemma-3-4b-itpro')
         else:
             self.model = None
 
